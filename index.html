@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi niña bonita ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #ffd6e0, #fff);
+  text-align: center;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1s;
+}
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+img {
+  width: 80%;
+  max-width: 250px;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+.corazon {
+  position: fixed;
+  font-size: 20px;
+  animation: flotar 3s linear;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-300px); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ❤️ PORTADA -->
+<h1 class="fade">💕ハニー💕</h1>
+<p class="fade">Eres la mejor niña de toda mi vida y siempre quiero que seas tu🥺💕</p>
+
+<!-- 🎵 MÚSICA -->
+<button onclick="toggleMusica()">🎵 Nuestra canción</button>
+<audio id="musica" loop>
+  <source src="C:\Users\TICAL\Downloads\01194438.mp3">
+</audio>
+
+<!-- 🕰️ HISTORIA -->
+<h2 class="fade">Mi primer amor eres y siempre seras tu...</h2>
+<p class="fade"></p>
+
+<!-- 📸 GALERÍA -->
+<h2 class="fade">Miraaaaaa</h2>
+<img src="C:\Users\TICAL\Downloads\foto1.jpeg.jpg">
+<img src="C:\Users\TICAL\Downloads\WhatsApp-Image-2026-04-29-at-21.42.37-_1_.jpg">
+<img src="C:\Users\TICAL\Downloads\WhatsApp-Image-2026-04-30-at-19.33.02.jpg">
+
+<!-- 💌 CARTA -->
+<h2 class="fade">Para ti</h2>
+<p class="fade">
+[ESCRIBE TU MENSAJE AQUÍ  
+No copies algo genérico, escribe algo real:
+- qué te gusta de ella
+- recuerdos
+- por qué es importante para ti]
+</p>
+
+<!-- 🎯 MENSAJE OCULTO -->
+<h2 class="fade">Un secreto...</h2>
+<button onclick="mostrarMensaje()">Haz clic ❤️</button>
+<p id="mensaje" style="display:none; font-size:20px;">
+  [MENSAJE SECRETO]
+</p>
+
+<!-- 📅 CONTADOR -->
+<h2 class="fade">Tiempo juntos</h2>
+<p id="dias"></p>
+
+<script>
+
+// 💌 Mensaje + corazones
+function mostrarMensaje() {
+  document.getElementById("mensaje").style.display = "block";
+
+  for (let i = 0; i < 15; i++) {
+    let c = document.createElement("div");
+    c.className = "corazon";
+    c.innerHTML = "❤️";
+    c.style.left = Math.random() * window.innerWidth + "px";
+    c.style.top = "80%";
+    document.body.appendChild(c);
+
+    setTimeout(() => c.remove(), 3000);
+  }
+}
+
+// 📅 Cambia esta fecha
+const inicio = new Date("2024-12-03");
+const hoy = new Date();
+const dias = Math.floor((hoy - inicio) / (1000 * 60 * 60 * 24));
+
+document.getElementById("dias").textContent =
+  "Llevamos " + dias + " días juntos 💕";
+
+// ✨ Animaciones
+const elementos = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+elementos.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
